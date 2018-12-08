@@ -1,0 +1,11 @@
+#!/usr/bin/env python3
+# https://stackoverflow.com/questions/5597836/embed-create-an-interactive-python-shell-inside-a-python-program
+
+import readline
+import code
+from pylabenv import *
+
+variables = globals().copy()
+variables.update(locals())
+shell = code.InteractiveConsole(variables)
+shell.interact()
