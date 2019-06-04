@@ -13,7 +13,10 @@ flip, linspace, zeros, ones, eye, outer, inner, dot, matmul, trace, transpose, s
 allclose, isscalar, where
 from numpy import empty_like, zeros_like, ones_like
 from numpy import mean, std, var, sort, argsort, histogram, unravel_index
-from numpy import exp, log, log2, sin, cos, tan, arcsin as asin, arccos as acos, arctan2 as atan2, sqrt, floor, ceil, conj, abs, sum, prod, round, real, imag
+from numpy import exp, log, log2, sin, cos, tan,\
+    arcsin as asin, arccos as acos, arctan2 as atan2,\
+    sqrt, floor, ceil, round, conj, abs, sum, prod, real, imag, sign,\
+    rad2deg, deg2rad
 from numpy import int8, int16, int32, int64, uint8, uint16, uint32, uint64, float32, float64, complex128
 from numpy import pi
 from numpy.fft import fft, ifft, fft2, ifft2, fftshift, ifftshift
@@ -108,8 +111,9 @@ def cconv1(x,w,axis=0):
     return scipy.ndimage.convolve1d(x,w,axis,mode='wrap')
 
 import cv2 as cv
-from cv2 import imread, imwrite, waitKey
-from cv2 import pyrUp, pyrDown
+from cv2 import imread, imwrite,\
+    waitKey as wait_key, destroyWindow as destroy_window, destroyAllWindows as destroy_all_windows
+from cv2 import pyrUp as pyr_up, pyrDown as pyr_down
 
 def imshow(window_name, image):
     dtype = image.dtype
