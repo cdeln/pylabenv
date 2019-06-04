@@ -144,9 +144,26 @@ def imshowgray(window_name, gray_image):
     gray_image = gray_image / gray_image.max()
     imshow(window_name, gray_image)
 
+def _ensure_array(possibly_cvmat):
+    if not isinstance(possibly_cvmat, ndarray):
+        return possibly_cvmat.get()
+    return possibly_cvmat
+
+def draw_circle(image, *args):
+    out = cv.circle(image, *args)
+    return _ensure_array(out)
+
+def draw_line(image, *args):
+    out = cv.line(image, *args)
+    return _ensure_array(out)
+
+def draw_rectangle(image, *args):
+    out = cv.rectangle(image, *args)
+    return _ensure_array(out)
+
 import matplotlib as mpl
 # uncomment if want to use tkinter
-mpl.use('Agg')
+#mpl.use('Agg')
 import matplotlib.pyplot as plt
 from matplotlib.pyplot import figure, subplots, show, draw, pause, plot, bar, scatter, legend,\
         suptitle as title, xlabel, ylabel, axis, xlim, ylim, xticks, yticks, savefig, clf
