@@ -176,13 +176,19 @@ def readfile(filepath):
     with open(filepath, 'r') as f:
         return f.read()
     
-def csvread(filename, parse_float = True):
+def csvread(filename, header = True, parse_float = True):
     sniffer = csv.Sniffer()
     with open(filename, 'r') as f:
         content = f.read()
-    dialect = sniffer.sniff(content, delimiters = ',;\t ')
+    try:
+        dialect = sniffer.sniff(content, delimiters = ',;\t ')
+    except csv.Error:
+        # https://bugs.python.org/issue2078
+        dialect = csv.excel
     with open(filename, 'r') as f:
         reader = csv.reader(f, dialect)
+        if header:
+            headers = next(reader)
         if parse_float:
             return [[float(x) for x in line] for line in reader]
         return [[x for x in line] for line in reader]
