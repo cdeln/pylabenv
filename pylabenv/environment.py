@@ -47,7 +47,7 @@ def normalize(array, norm = norm):
     array: array 
         Array to normalize
     norm : what
-        Norm to normalize agains
+        Norm to normalize against.
         Default is the euclidean norm
     Returns
     -------
