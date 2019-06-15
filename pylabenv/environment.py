@@ -12,7 +12,7 @@ from numpy import array, ndarray, matrix, arange, ogrid, meshgrid, reshape, tile
 flip, linspace, zeros, ones, eye, outer, inner, dot, matmul, trace, transpose, swapaxes, expand_dims, ndim, isnan,\
 allclose, isscalar, where
 from numpy import empty_like, zeros_like, ones_like
-from numpy import mean, std, var, sort, argsort, histogram, unravel_index
+from numpy import mean, median, std, var, sort, argsort, histogram, unravel_index
 from numpy import exp, log, log2, sin, cos, tan,\
     arcsin as asin, arccos as acos, arctan2 as atan2,\
     sqrt, floor, ceil, round, conj, abs, sum, prod, real, imag, sign,\
@@ -205,3 +205,6 @@ def tic():
 def toc():
     toc.time = time.clock()
     print(toc.time - tic.time)
+
+def find(bool_list):
+    return [index for index, elem in enumerate(bool_list) if elem]
