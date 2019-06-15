@@ -33,15 +33,15 @@ np.set_printoptions(
 import pandas as pd
 from pandas import read_csv
 
-def min(x, y = None):
+def min(x, y = None, axis = None):
     if y is not None:
         return np.minimum(x,y)
-    return np.min(x)
+    return np.min(x, axis)
 
-def max(x, y = None):
+def max(x, y = None, axis = None):
     if y is not None:
         return np.maximum(x,y)
-    return np.max(x)
+    return np.max(x, axis)
 
 def normalize(array, norm = norm):
     """
