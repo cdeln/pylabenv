@@ -28,6 +28,9 @@ np.set_printoptions(
         suppress = True)
 #np.seterr(all='raise')
 
+import pandas as pd
+from pandas import read_csv
+
 def min(x, y = None):
     if y is not None:
         return np.minimum(x,y)
@@ -176,22 +179,38 @@ def readfile(filepath):
     with open(filepath, 'r') as f:
         return f.read()
     
-def csvread(filename, header = True, parse_float = True):
-    sniffer = csv.Sniffer()
-    with open(filename, 'r') as f:
-        content = f.read()
-    try:
-        dialect = sniffer.sniff(content, delimiters = ',;\t ')
-    except csv.Error:
-        # https://bugs.python.org/issue2078
-        dialect = csv.excel
-    with open(filename, 'r') as f:
-        reader = csv.reader(f, dialect)
-        if header:
-            headers = next(reader)
-        if parse_float:
-            return [[float(x) for x in line] for line in reader]
-        return [[x for x in line] for line in reader]
+#def csvread(filename, header = True, parse_float = True):
+#    sniffer = csv.Sniffer()
+#    with open(filename, 'r') as f:
+#        content = f.read()
+#    try:
+#        dialect = sniffer.sniff(content, delimiters = ',;\t ')
+#    except csv.Error:
+#        # https://bugs.python.org/issue2078
+#        dialect = csv.excel
+#    with open(filename, 'r') as f:
+#        reader = csv.reader(f, dialect)
+#        if header:
+#            headers = next(reader)
+#        if parse_float:
+#            lines = []
+#            for idx, line in enum(reader):
+#                try:
+#                    float_line = [
+#                        float(x) for x in
+#                        filter(lambda x: x != '', line)
+#                    ]
+#                except ValueError as e:
+#                    print("Could not convert line {}: {} to floats"
+#                        .format(idx, line),
+#                        file = sys.stderr)
+#                    raise e
+#                lines.append(float_line)
+#        return [[x for x in line] for line in reader]
+
+def csvread(filename):
+    dataframe = pd.read_csv(filename)
+    return dataframe.values
 
 def mkdirp(path):
     if os.path.isfile(path):
