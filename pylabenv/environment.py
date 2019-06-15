@@ -229,3 +229,12 @@ def toc():
 
 def find(bool_list):
     return [index for index, elem in enumerate(bool_list) if elem]
+
+def enum(x):
+    if isinstance(x, np.ndarray):
+        if len(x.shape) > 1:
+            return np.ndenumerate(x)
+        else:
+            return enumerate(x)
+    else:
+        return enumerate(x)
