@@ -81,7 +81,7 @@ def shuffle(array, axis = 0):
     np.random.shuffle(tmp)
     return tmp
 
-def argmin(X):
+def argmin(X, axis = None):
     """
     Computes the index of the minimum element of an array
     
@@ -89,17 +89,42 @@ def argmin(X):
     ----------
     X : array
         Array to calculate the minimum over
+    axis: int
+        Axis to calculate the the argmin over.
+        Default is None.
     Returns
     -------
     tuple or int
         (Multi-)index of the minimum element
     """
-    amin = unravel_index(np.argmin(X), np.array(X).shape)
+    if axis is None:
+        amin = unravel_index(np.argmin(X), np.shape(X))
+    else:
+        amin = np.argmin(X, axis = axis)
     if len(amin) == 1:
         amin = amin[0]
     return amin
-def argmax(X):
-    amax = unravel_index(np.argmax(X), np.array(X).shape)
+
+def argmax(X, axis = None):
+    """
+    Computes the index of the maximum element of an array
+    
+    Parameters
+    ----------
+    X : array
+        Array to calculate the maximum over
+    axis: int
+        Axis to calculate the the argmax over.
+        Default is None.
+    Returns
+    -------
+    tuple or int
+        (Multi-)index of the minimum element
+    """
+    if axis is None:
+        amax = unravel_index(np.argmax(X), np.shape(X))
+    else:
+        amax = np.argmax(X, axis = axis)
     if len(amax) == 1:
         amax = amax[0]
     return amax
