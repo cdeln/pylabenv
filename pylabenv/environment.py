@@ -236,8 +236,14 @@ def readfile(filepath):
 #        return [[x for x in line] for line in reader]
 
 def csvread(filename):
+    if not os.path.isfile(filename):
+        raise OSError(f'Can not read non-existent CSV file {filename}')
     dataframe = pd.read_csv(filename)
     return dataframe.values
+
+def csvsave(filename, array, column_names):
+    dataframe = pd.DataFrame(array, columns = column_names)
+    dataframe.to_csv(filename, index = False)
 
 def mkdirp(path):
     if os.path.isfile(path):
