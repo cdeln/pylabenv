@@ -10,7 +10,7 @@ from copy import copy, deepcopy
 import argparse
 
 import numpy as np
-from numpy import array, ndarray, matrix, arange, ogrid, meshgrid, reshape, tile, repeat, squeeze, roll, stack, concatenate as cat, \
+from numpy import array, ndarray, matrix, arange, ogrid, meshgrid, shape, reshape, tile, repeat, squeeze, roll, stack, concatenate as cat, \
 flip, linspace, zeros, ones, eye, outer, inner, dot, matmul, trace, transpose, swapaxes, expand_dims, ndim, isnan,\
 allclose, isscalar, where
 from numpy import empty_like, zeros_like, ones_like
