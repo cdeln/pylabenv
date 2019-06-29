@@ -268,4 +268,4 @@ def enum(x, start = 0):
         else:
             return enumerate(x, start)
     else:
-        return enumerate(x)
+        return enumerate(x, start)
