@@ -6,7 +6,7 @@ with open('README.md', 'r') as f:
 
 setuptools.setup(
     name = 'pylabenv',
-    version = '0.0.1',
+    version = '0.0.2',
     author = 'Carl Dehlin',
     author_email = 'carl@dehlin.com',
     description = 'A utility library for creating a Matlab-like environment for Python',
@@ -29,6 +29,7 @@ setuptools.setup(
         'scipy>=1.1.0',
         'opencv-python>=3.4.3.18',
         'matplotlib>=2.2.2',
-        'pyyaml>=3.12'
+        'pyyaml>=3.12',
+        'pandas>=0.24.2'
     ]
 )
