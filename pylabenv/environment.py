@@ -20,6 +20,7 @@ from numpy import exp, log, log2, sin, cos, tan,\
     arcsin as asin, arccos as acos, arctan2 as atan2,\
     sqrt, floor, ceil, round, conj, abs, sum, prod, real, imag, sign,\
     rad2deg, deg2rad, angle
+from numpy import save, load
 from numpy import int8, int16, int32, int64, uint8, uint16, uint32, uint64, float32, float64, complex128
 from numpy import pi
 from numpy.fft import fft, ifft, fft2, ifft2, fftshift, ifftshift
