@@ -1,11 +1,12 @@
 import os
+from os.path import join, basename, dirname
 import sys
 import re
 import json
 import yaml
 import csv
 import time
-from glob import glob
+from glob import glob as glob_
 from copy import copy, deepcopy
 import argparse
 
@@ -32,6 +33,9 @@ np.set_printoptions(
 
 import pandas as pd
 from pandas import read_csv
+
+def glob(pattern):
+    return sort(glob_(pattern, recursive = True))
 
 def min(x, y = None, axis = None):
     if y is not None:
