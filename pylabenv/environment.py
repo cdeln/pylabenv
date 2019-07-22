@@ -32,6 +32,8 @@ np.set_printoptions(
         suppress = True)
 #np.seterr(all='raise')
 
+import scipy.sparse as sparse
+
 import pandas as pd
 from pandas import read_csv
 
