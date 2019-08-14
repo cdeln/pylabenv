@@ -152,11 +152,12 @@ from cv2 import imread, imwrite,\
     waitKey as wait_key, destroyWindow as destroy_window, destroyAllWindows as destroy_all_windows
 from cv2 import pyrUp as pyr_up, pyrDown as pyr_down
 
-def imshow(window_name, image):
+def imshow(window_name, image, normalize = False):
     dtype = image.dtype
     if dtype in [float32, float64]:
-        normalized = (image - image.min()) / (image.max() - image.min()) 
-        cv.imshow(window_name, normalized)
+        if normalize:
+            image = (image - image.min()) / (image.max() - image.min())
+        cv.imshow(window_name, image)
     elif dtype == uint8:
         cv.imshow(window_name, image)
     else:
@@ -165,7 +166,7 @@ def imshow(window_name, image):
 def imsave(image, path):
     dtype = image.dtype
     if dtype in [float32, float64]:
-        image = (image - image.min()) / (image.max() - image.min()) 
+        image = (image - image.min()) / (image.max() - image.min())
         image = (255*image).astype(uint8)
     elif dtype == uint8:
         pass
